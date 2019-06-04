@@ -2,19 +2,22 @@
 <div class="modal fade" id="sesionModal" tabindex="-1" role="dialog" aria-labelledby="sesionModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <span class="modal-title" id="sesionModalLabel">Ingresa tus datos</span>
-      </div>
-      <div class="modal-body">
-        <form action="../includes/login.php" method="post" id="login-form" onsubmit="return check_required_login(this)">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span class="modal-title" id="sesionModalLabel">Ingresa tus datos</span>
+        </div>
+        <div class="alert alert-danger hidden" id="log-err" role="alert">
+            Datos incorrectos o campos vacios.
+        </div> 
+    <div class="modal-body">
+        <form action="/includes/login.php" method="post" id="login-form" >
             <div class="form-group">
-                <label for="EmailInput">Email address</label>
-                <input type="text" name="user" class="form-control required-login" id="EmailInput" placeholder="Email">
+                <label for="EmailInput">Nombre de usuario</label>
+                <input type="text" name="user" class="form-control required-login" id="EmailInput" placeholder="Nombre de usuario">
             </div>
             <div class="form-group">
-                <label for="PassInput">Password</label>
-                <input type="password" name="password" class="form-control required-login" id="PassInput" placeholder="Password">
+                <label for="PassInput">Contraseña</label>
+                <input type="password" name="password" class="form-control required-login" id="PassInput" placeholder="Contraseña">
             </div>
             <!-- Break -->
             <div class="12u$ modal-footer">
@@ -23,7 +26,7 @@
                 </ul>
             </div>
         </form>
-        <form action="register.php" method="post"  id="register-form" onsubmit="return check_required_inputs(this)">
+        <form action="/includes/register.php" method="post"  id="register-form" onsubmit="return check_required_inputs(this)">
             <div class="row uniform">
                 <div class="6u 12u$(xsmall)">
                     <input type="text" name="username" id="username" placeholder="Nombre de usuario" class="required">
@@ -41,7 +44,7 @@
                 </div>
                 <!-- Break -->
                 <div class="12u$">
-                    <input type="date" name="birthName" id="birthName" placeholder="Fecha de nacimiento" class="required">
+                    <input type="date" name="birthDate" id="birthDate" placeholder="Fecha de nacimiento" class="required">
                 </div>
                 <!-- Break -->
                 <div class="12u$">

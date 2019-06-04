@@ -1,3 +1,7 @@
+body.subpage-inner{
+    overflow: hidden;
+}
+
 
 ul li {
     padding-left: 2px!important;
@@ -32,10 +36,21 @@ ul li {
     }
 
     .side-nav li a:hover,
-    .side-nav li a:focus {
+    .side-nav li a:focus,
+    .side-nav li a:active  {
         outline: none;
         background-color: #bfbecc !important;
     }
+
+
+    .side-nav li a.active-submenu {
+        background-color: #bfbecc !important;
+    }
+
+    .side-nav li a.active-menu {
+        color: #262627fb !important;
+        font-weight: bolder;
+    }sub
 }
 
 .side-nav>li>ul {
@@ -83,6 +98,8 @@ ul li {
 
 #wrapper{
     margin-top: 2em;
+    width: 84%;
+    margin-left: 16%;
 }
 
 #rootwizard>div>div>div>ul.nav-pills>li>a{
@@ -100,7 +117,8 @@ ul li {
 }
 
 #question-section{
-	background-image: url('../img/banner.png');
+    background-image: url('../img/banner.png');
+    left:100px;
 }
 
 

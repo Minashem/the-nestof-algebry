@@ -65,9 +65,10 @@ $(document).ready(function () {
 
 	// Iframes 
 	$( "#perfil" ).click(function() {
-		document.getElementById('main-section').src = '../templates/perfil.html';
+		document.getElementById('main-section').src = './includes/perfil.php';
 	});
-	//Modulo 1
+
+	//Module 1
 	$( "#m1t1" ).click(function() {
 		document.getElementById('main-section').src = '../templates/modulo1tema1.html';
 	});
@@ -84,8 +85,7 @@ $(document).ready(function () {
 		document.getElementById('main-section').src = '../templates/modulo1tema4.html';
 	});
 
-
-	//Modulo 2
+	//Module 2
 	$( "#m2t1" ).click(function() {
 		document.getElementById('main-section').src = '../templates/modulo2tema1.html';
 	});
@@ -101,8 +101,9 @@ $(document).ready(function () {
 	$( "#m2t4" ).click(function() {
 		document.getElementById('main-section').src = '../templates/modulo2tema4.html';
 	});
+	
 
-	//Modulo 3
+	//Module 3
 
 	$( "#m3t1" ).click(function() {
 		document.getElementById('main-section').src = '../templates/modulo3tema1.html';
@@ -113,74 +114,92 @@ $(document).ready(function () {
 	});
 
 	$( "#m3t3" ).click(function() {
-		document.getElementById('main-section').src = '../templates/modulo3tema3.html';
+		document.getElementById('main-section').src = 'https://www.youtube.com/embed/Eba6xr6j0_M';
+
+	});
+
+	
+	//Examn
+	$( "#m1E" ).click(function() {
+		document.getElementById('main-section').src = '../includes/examn_1.php';
+	});
+
+	$( "#m2E" ).click(function() {
+		document.getElementById('main-section').src = '../includes/examn_2.php';
+	});
+
+	$( "#m3E" ).click(function() {
+		document.getElementById('main-section').src = '../includes/examn_3.php';
 	});
 
 
-	//
-
-	$("img").click(function(){
-		alert('xddddd');
-		//$("input:text").val("Glenn Quagmire");
-	});
-
+	// answers
 	$('a.isDisabled').removeAttr('data-toggle');
 
 	
 	$("#register").click(function(){
 		$('#login-form').hide();
 		$('#register-form').show();
+		$("#log-err").addClass("hidden");
+
 	});
 
 	$("#login").click(function(){
 		$('#register-form').hide();
 		$('#login-form').show();
+		$("#log-err").addClass("hidden");
 	});
 		
 });
 
-function check_required_login(form) {
-	// var flag = true;
-  //   $(':radio').each(function () {
-  //       name = $(this).attr('name');
-  //       if (flag && !$(':radio[name="' + name + '"]:checked').length) {
-  //           alert(name + ' group not checked');
-  //           flag = false;
-	// 	}
-	// 	else{
-	// 		console.log('flag');
-	// 	}
-	// });
-	
-	var isValid = true;
-	$('.required-login').each(function() {
-		console.log($(this).val());
-	  if ( $(this).val() === '' ){
-		isValid=false;
-		console.log('no valido');
-	  }
-	  else{
-		console.log('valido'+ isValid );
-	  }		  
-	});
-	
-	return isValid;
-}
-
+//Validate forms
 function check_required_inputs(form) {
 	var isValid = true;
 	$('.required').each(function() {
-		console.log($(this).val());
 	  if ( $(this).val() === '' ){
 		isValid=false;
-		console.log('no valido');
+		$("#log-err").removeClass("hidden");
 	  }
 	  else{
-		console.log('valido'+ isValid );
+		$("#log-err").addClass("hidden");
 	  }		  
 	});
 	
 	return isValid;
 }
 
+function setInputValue1(){
+	var value = $(event.target).attr("data-value");
+	$('#respuesta1').val(value);
+	console.log("value1: "+value);
 
+}
+
+function setInputValue2(){
+	var value = $(event.target).attr("data-value");
+	$('#respuesta2').val(value);
+	console.log("value2: "+value);
+
+}
+
+
+function setInputValue3(){
+	var value = $(event.target).attr("data-value");
+	$('#respuesta3').val(value);
+	console.log("value3: "+value);
+
+}
+
+function setInputValue4(){
+	var value = $(event.target).attr("data-value");
+	$('#respuesta4').val(value);
+	console.log("value4: "+value);
+
+}
+
+function setInputValue5(){
+	var value = $(event.target).attr("data-value");
+	$('#respuesta5').val(value);
+	console.log("value5: "+value);
+
+}

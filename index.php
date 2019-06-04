@@ -1,14 +1,12 @@
 <?php 
 session_start();
-var_dump($_SESSION);
-session_destroy();
 ?>
 
 <!DOCTYPE HTML>
 <html>
 	<head>
     <?php include($_SERVER['DOCUMENT_ROOT'].'/includes/header.php');
-     
+	
     if(isset($_SESSION['response']) && $_SESSION['response'] == false) { ?>
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -23,7 +21,7 @@ session_destroy();
 		<!-- Header -->
 		<header id="header">
 			<div class="inner">
-				<a href="index.html" class="logo"><img src="./assets/img/icon.png" alt="Pic 01"  style="width:20px; margin: 0 10px; "/>The Nest Of Algebry</a>
+				<a href="/" class="logo"><img src="./assets/img/icon.png" alt="Pic 01"  style="width:20px; margin: 0 10px; "/>The Nest Of Algebry</a>
 				<div class="left-navigation">
 					<a href="index.html">Inicio</a>
 					<a href="elements.html">Sobre nosotros</a>
@@ -158,5 +156,36 @@ session_destroy();
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+			<?php
+			//If there is a session open change "Iniciar sesion" to "Cerrar sesiion" link and logout on click
+			 if(isset($_SESSION['user'])){
+				echo '<script language="javascript">
+						$("#login").attr("id", "logout");
+						$("#logout").removeAttr("data-toggle");
+						$("#logout").removeAttr("data-target");
+						$("#logout").text("Cerrar sesion");
+						$("#logout").click(function(){
+							window.location.href = "/includes/logout.php";
+							console.log("login");
+						});
+					</script>';
+					session_destroy();
+			}else if(!isset($_SESSION['user'])){
+				echo '<script language="javascript">
+						$("#logout").attr("id", "login");
+						$("#login").attr("data-target", "#sesionModal");
+						$("#login").attr("data-toggle", "modal");
+						$("#login").text("Iniciar sesion");
+						$("#register-form").hide();
+					</script>';
+			}	
+			
+			if(isset($_SESSION['response']) && $_SESSION['response'] == false){
+				echo '<script language="javascript">
+					$("#log-err").removeClass("hidden");
+					</script>';
+					session_destroy();
+			}
+			?>
 	</body>
 </html>

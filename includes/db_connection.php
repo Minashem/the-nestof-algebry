@@ -1,5 +1,4 @@
 <?php
- echo 'CONECCION ESTABLECIDA';
 function OpenCon()
  {
  $dbhost = "localhost";

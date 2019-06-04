@@ -11,11 +11,18 @@ $result = $conn->query($sql) or die($conn->error);
 if($row =  mysqli_fetch_array($result)){
     if($row['password'] == $password){
     $_SESSION['user'] = $user;
-    $_SESSION['id'] = $row['password'];
+    $_SESSION['password'] = $row['password'];
+    $_SESSION['firstname'] = $row['firstname'];
+    $_SESSION['lastname'] = $row['lastname'];
+    $_SESSION['birthdate'] = $row['birthdate'];
+    $_SESSION['gender'] = $row['gender'];
+    $_SESSION['security_question'] = $row['security_question'];
+    $_SESSION['answer'] = $row['answer'];
+    
     $_SESSION['response'] = true;
   
     if($_SESSION['response'] = true){
-        header("location: /includes/dashboard.php");
+        header("location: /dashboard.php");
     }
     }else{
         $_SESSION['response'] = false;
@@ -24,7 +31,7 @@ if($row =  mysqli_fetch_array($result)){
     }
 }else{
     $_SESSION['response'] = false;
-    header("location: index.php");
+    header("location: /");
 exit();
 }
 ?>
