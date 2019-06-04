@@ -10,14 +10,14 @@
             Datos incorrectos o campos vacios.
         </div> 
     <div class="modal-body">
-        <form action="/includes/login.php" method="post" id="login-form" onsubmit="return check_required_inputs(this)" >
+        <form action="/includes/login.php" method="post" id="login-form" onsubmit="return check_required_login(this)">
             <div class="form-group">
                 <label for="EmailInput">Nombre de usuario</label>
-                <input type="text" name="user" class=" required" id="EmailInput" placeholder="Nombre de usuario">
+                <input type="text" name="user" class="required-login" id="EmailInput" placeholder="Nombre de usuario">
             </div>
             <div class="form-group">
                 <label for="PassInput">Contraseña</label>
-                <input type="password" name="password" class="required" id="PassInput" placeholder="Contraseña">
+                <input type="password" name="password" class="required-login" id="PassInput" placeholder="Contraseña">
             </div>
             <!-- Break -->
             <div class="12u$ modal-footer">

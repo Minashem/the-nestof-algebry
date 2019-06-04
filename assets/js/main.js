@@ -168,6 +168,23 @@ function check_required_inputs(form) {
 	return isValid;
 }
 
+
+//Validate forms
+function check_required_login(form) {
+	var isValid = true;
+	$('.required-login').each(function() {
+	  if ( $(this).val() === '' ){
+		isValid=false;
+		$("#log-err").removeClass("hidden");
+	  }
+	  else{
+		$("#log-err").addClass("hidden");
+	  }		  
+	});
+	
+	return isValid;
+}
+
 function setInputValue1(){
 	var value = $(event.target).attr("data-value");
 	$('#respuesta1').val(value);
