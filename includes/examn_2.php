@@ -23,27 +23,25 @@ $conn = OpenCon();
 	<body class="subpage">
     <div id="throbber" style="display:none; min-height:120px;"></div>
 			<div id="noty-holder"></div>
-			<div id="wrapper">
+			<div id="wrapper" class="sub-margin">
             <div class="flex flex-2">
                 <section id="main">
                     <?php
-                    $tema=2;
-                    $largo=0;
+                    $subject=2;
+                    $length=0;
                     $numero=0;
-                    //$random=rand(1,$largo);
-
-                    if ($tema==1){
-                        $largo=11;
-                    }elseif($tema==2){
-                        $largo=24;
+                    //validate subject
+                    if ($subject==1){
+                        $length=11;
+                    }elseif($subject==2){
+                        $length=24;
                     }else{
-                        $largo=10;
+                        $length=10;
                     }
 
-                    $idT = 'T'. $tema;
+                    $idT = 'T'. $subject;
                     $sql = "SELECT question, answer FROM exams WHERE clave LIKE '$idT%'";
                     $topic_questions_sql = $conn->query($sql) or die($conn->error);
-                    //$clave= 'T'. $tema. 'C' .$numero;
 
                     $topic_questions = [];
                     if ($topic_questions_sql->num_rows > 0) {
@@ -55,72 +53,90 @@ $conn = OpenCon();
                     shuffle($topic_questions);
                     $questions = array_slice($topic_questions, 0, 5);
 
-                    $numero_pregunta=1;
+                    $question_number=1;
                     $data_value=1;
                     foreach($questions as $item) {
-                        $numero= rand(1,$largo);
-                        $parte2="";
-                        $parte2_completa="";
+                        $numero= rand(1,$length);
+                        $part2="";
+                        $part2_complete="";
 
                         
-                        $pregunta=$item['question']; 
-                        $respuesta=$item['answer'];
+                        $question=$item['question']; 
+                        $anwser=$item['answer'];
 
                         $url="../assets/img/"; 
-                        $partes=explode($url, $pregunta);
-                        $parte1=$partes[0];
+                        $parts=explode($url, $question);
+                        $part1=$parts[0];
 
-                        if (!empty($partes[1])) {
-                            $parte2=$partes[1];
+                        if (!empty($parts[1])) {
+                            $part2=$parts[1];
                         }
 
 
-                        $parte2_completa=$url.$parte2;
+                        $parte2_complete=$url.$part2;
 
-                        // Wrong answer assinment 
+                        // Wrong answer assingment 
                         $r1= 0;
                         while ($r1 == 0 || $r1 == $numero) {
-                            $r1=rand(1,$largo);
+                            $r1=rand(1,$length);
                         }
-                        //Wrong answer assinment 
+                        //Wrong answer assingment 
                         $r2= 0;
                         while ($r2 == 0 || $r2 == $numero || $r2 == $r1) {
-                            $r2=rand(1,$largo);
+                            $r2=rand(1,$length);
                         }
-                        //Wrong answer assinment 
+                        //Wrong answer assinmgent 
                         $r3= 0;
                         while ($r3 == 0 || $r3 == $numero || $r3 == $r1 || $r3 == $r2) {
-                            $r3=rand(1,$largo);
+                            $r3=rand(1,$length);
                         }
 
-                        $img1=$url.'T'.$tema.'A'.$r1;
-                        $img2=$url.'T'.$tema.'A'.$r2;
-                        $img3=$url.'T'.$tema.'A'.$r3;
+                        //Generate image structure
+
+                        $img1=$url.'T'.$subject.'A'.$r1;
+                        $img2=$url.'T'.$subject.'A'.$r2;
+                        $img3=$url.'T'.$subject.'A'.$r3;
 
                         $html_image1='<div class="4u$"><span class="image"><img src="'.$img1.'.gif" data-value="0" onclick="setInputValue'.$data_value.'()"></span></div>';
                         $hmtl_image2='<div class="4u$"><span class="image"><img src="'.$img2.'.gif" data-value="0" onclick="setInputValue'.$data_value.'()"></span></div>';
                         $html_image3='<div class="4u$"><span class="image"><img src="'.$img3.'.gif" data-value="0" onclick="setInputValue'.$data_value.'()"></span></div>';
-                        $html_response='<div class="4u$"><span class="image"><img src="'.$respuesta.'" data-value="1" onclick="setInputValue'.$data_value.'()"></span></div>';
+                        $html_response='<div class="4u$"><span class="image"><img src="'.$anwser.'" data-value="1" onclick="setInputValue'.$data_value.'()"></span></div>';
 
                                         
                         $sortable=array($html_image1,$hmtl_image2,$html_image3,$html_response);
                         shuffle($sortable);
-                        
-                        echo '<div class="box alt">
-                                <p><strong>Pregunta '.$numero_pregunta.'.</strong>'.$parte1.'<img src='.$parte2_completa.'></p>
-                                <div class="row 50% uniform">';?>
-                                <?php
+            
+                        if($part2!='' ||$part2!=null){
+                            
+                            echo '<div class="box alt">
+                            <p><strong>Pregunta '.$question_number.'.</strong>'.$part1.'<img src='.$part2_complete.'></p>
+                            <div class="row 50% uniform">';?>
+                            <?php
                                 foreach($sortable as $item) {
                                     echo $item . "\n";
                                 } 
                                 echo  '</div>
                                 </div>';
                                 
-                                
-                        $numero_pregunta++;
-                        $data_value++;
+                                $question_number++;
+                                $data_value++;
+                         }else 
+                         
+                         if($part2=='' ||$part2==null){
+                                echo '<div class="box alt">
+                                <p><strong>Pregunta '.$question_number.'.</strong>'.$part1.'</p>
+                                <div class="row 50% uniform">';?>
+                                <?php
+                                    foreach($sortable as $item) {
+                                        echo $item . "\n";
+                                    } 
+                                    echo  '</div>
+                                    </div>';
+                                    
+                                    $question_number++;
+                                    $data_value++;                         
+                        }
                     }
-
                     //$conn->close();
 
 
@@ -128,7 +144,7 @@ $conn = OpenCon();
                 </section>
             </div>
            
-            <form name="form" action="validate_exam.php" method="post">
+            <form name="form" action="validate_exam2.php" method="post">
             <div class="inputs hidden">
                 <input type="text" name="respuesta1" id="respuesta1">
                 <input type="text" name="respuesta2" id="respuesta2">

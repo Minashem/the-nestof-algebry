@@ -2,6 +2,13 @@
 session_start();
 error_reporting(0);
 
+//validate if there is a session open
+if(!isset($_SESSION['user']))
+{
+   header("Location:/");
+   exit;
+}
+
 if(!isset($_SESSION['subject'])){
 	$_SESSION['subject']=1;
 }
@@ -64,8 +71,9 @@ if(!isset($_SESSION['subject'])){
 					</div>
 					<!-- /.navbar-collapse -->
 				</nav>
-				<!-- Seccion de preguntas -->
-				<section id="question-section">
+			</div>
+			<!-- Seccion de preguntas -->
+			<section id="question-section">
 					<div class="inner">
 						<iframe id="main-section"
 						title="Inline Frame Example"
@@ -74,8 +82,7 @@ if(!isset($_SESSION['subject'])){
 						src="./templates/blank.html" onload="this.width=screen.width;this.height=screen.height;">
 						</iframe>
 					</div>
-				</section>
-			</div>
+			</section>
 
 		<!-- Scripts -->
 			<script src="assets/js/skel.min.js"></script>

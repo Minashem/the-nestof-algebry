@@ -65,7 +65,7 @@ $(document).ready(function () {
 
 	// Iframes 
 	$( "#perfil" ).click(function() {
-		document.getElementById('main-section').src = './includes/perfil.php';
+		document.getElementById('main-section').src = './includes/profile.php';
 	});
 
 	//Module 1
@@ -149,7 +149,6 @@ $(document).ready(function () {
 		$('#login-form').show();
 		$("#log-err").addClass("hidden");
 	});
-		
 });
 
 //Validate forms

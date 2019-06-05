@@ -23,7 +23,7 @@ $conn = OpenCon();
 	<body class="subpage">
     <div id="throbber" style="display:none; min-height:120px;"></div>
 			<div id="noty-holder"></div>
-			<div id="wrapper">
+			<div id="wrapper" class="sub-margin">
             <div class="flex flex-2">
                 <section id="main">
                     <?php
@@ -128,7 +128,7 @@ $conn = OpenCon();
                 </section>
             </div>
            
-            <form name="form" action="validate_exam.php" method="post">
+            <form name="form" action="validate_exam3.php" method="post">
             <div class="inputs hidden">
                 <input type="text" name="respuesta1" id="respuesta1">
                 <input type="text" name="respuesta2" id="respuesta2">

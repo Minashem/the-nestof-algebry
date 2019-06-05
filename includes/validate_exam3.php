@@ -4,6 +4,7 @@ session_start();
 $conn = OpenCon();
 $errors= array();
 
+
 $answer1= $_POST['respuesta1'];
 $answer2= $_POST['respuesta2'];
 $answer3= $_POST['respuesta3'];
@@ -36,9 +37,9 @@ if(!empty($user)){
 
     if($exam){
         if(count($errors) == 0){
-            $query = "INSERT INTO userhistory (username,examGrade1) VALUES('$user',$exam_grade')";
+            $query = "INSERT INTO userhistory (username,examGrade3) VALUES('$user',$exam_grade')";
         }else{
-            $query = "UPDATE userhistory SET examGrade1='$exam_grade' WHERE username='$user'";
+            $query = "UPDATE userhistory SET examGrade3='$exam_grade' WHERE username='$user'";
 
         }
         mysqli_query($conn, $query);

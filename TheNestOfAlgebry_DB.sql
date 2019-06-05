@@ -105,8 +105,8 @@ CREATE TABLE `UserHistory` (
 
 INSERT INTO `UserHistory` (`id`, `username`, `examGrade1`, `examGrade2`, `examGrade3`, `examGrade4`, `examGrade5`) VALUES
 (1, 'victor4', '100', '80', '80', '', ''),
-(2, 'yuli', '60', '20', '', '', ''),
-(3, 'rockstar', '', '', '', '', '');
+(2, 'yuli', '80', '100', '', '', ''),
+(3, 'rockstar', '80', '', '', '', '');
 
 ALTER TABLE `UserHistory` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`);
 ALTER TABLE `UserHistory` MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
